@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wyverson Couto — Desenvolvedor Front-End</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EEF1EE;
+    --paper: #F7F8F5;
+    --ink: #1A2421;
+    --ink-soft: #43524C;
+    --accent: #2F6F62;
+    --accent-warm: #C9752E;
+    --line: rgba(26,36,33,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
+  a{color:var(--accent);}
+
+  /* HERO */
+  header.hero{
+    padding:88px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+  h1{font-size:clamp(36px, 6vw, 54px); line-height:1.08; max-width:11ch;}
+  .role{
+    font-size:19px;
+    color:var(--ink-soft);
+    margin-top:14px;
+    max-width:52ch;
+  }
+  .hero-links{margin-top:28px; display:flex; gap:22px; flex-wrap:wrap; font-size:15px;}
+  .hero-links a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px;}
+  .hero-links a:hover{border-color:var(--accent);}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{font-size:26px; margin-bottom:24px;}
+
+  p{color:var(--ink-soft); max-width:64ch;}
+
+  /* PROJETO / DEMO */
+  .project-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:32px;
+  }
+  .project-card h3{font-size:21px; margin-bottom:8px;}
+  .project-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+  }
+  .project-links{margin-top:18px; font-size:15px;}
+
+  .demo{
+    margin-top:24px;
+    border-top:1px dashed var(--line);
+    padding-top:24px;
+  }
+  .demo-title{font-size:14px; color:var(--ink-soft); margin-bottom:14px;}
+  .demo-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:20px;}
+  @media(max-width:560px){.demo-grid{grid-template-columns:1fr;}}
+  .item-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:9px 0; border-bottom:1px solid var(--line); font-size:15px;
+  }
+  .item-row:last-child{border-bottom:none;}
+  .item-row label{display:flex; align-items:center; gap:10px; cursor:pointer;}
+  .item-row input{accent-color:var(--accent); width:16px; height:16px;}
+  .price{color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; font-size:14px;}
+  .summary{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:20px;
+    align-self:start;
+  }
+  .summary .total-label{font-size:13px; color:var(--ink-soft); margin-bottom:4px;}
+  .summary .total-value{
+    font-family:'Fraunces', serif; font-size:34px; font-weight:600; color:var(--accent);
+  }
+  .summary ul{list-style:none; padding:0; margin:16px 0 0; font-size:14px; color:var(--ink-soft);}
+  .summary li{padding:3px 0;}
+  .empty{color:var(--ink-soft); font-size:14px; font-style:italic;}
+
+  /* HABILIDADES */
+  .tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:7px 12px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    color:var(--ink-soft);
+    background:var(--paper);
+  }
+
+  /* FORMAÇÃO / CERTIFICAÇÕES */
+  .cert-list{display:flex; flex-direction:column; gap:0;}
+  .cert-row{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:14px 0; border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+  .cert-row:last-child{border-bottom:none;}
+  .cert-name{color:var(--ink);}
+  .cert-org{color:var(--ink-soft); font-size:13px; font-family:'IBM Plex Mono', monospace; text-align:right; white-space:nowrap;}
+
+  /* EXPERIENCIA */
+  .job{margin-bottom:26px;}
+  .job:last-child{margin-bottom:0;}
+  .job-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px;}
+  .job-head h3{font-size:17px; font-family:'Inter',sans-serif; font-weight:600;}
+  .job-period{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-soft);}
+  .job p{margin-top:6px; font-size:15px;}
+
+  /* CONTATO */
+  .contact-grid{display:flex; flex-wrap:wrap; gap:28px; font-size:15px;}
+  .contact-item .label{display:block; font-size:12px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; margin-bottom:4px;}
+  .fill-in{color:var(--accent-warm);}
+
+  footer{padding:40px 0 70px; font-size:13px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">portfólio</div>
+    <h1>Wyverson Couto</h1>
+    <p class="role">Desenvolvedor Front-End em formação, com base em HTML5, CSS3, JavaScript e React — construindo o caminho de analista de sistemas para o desenvolvimento com projetos práticos e estudo constante.</p>
+    <div class="hero-links">
+      <a href="https://github.com/WyversonCouto" target="_blank">github.com/WyversonCouto</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </header>
+
+  <section id="sobre">
+    <h2>Sobre</h2>
+    <p>Tecnólogo em Análise e Desenvolvimento de Sistemas, com formação concluída em 2026. Ao longo do curso e por conta própria, venho me aprofundando em desenvolvimento front-end — HTML5, CSS3, JavaScript, React e TypeScript — através de projetos práticos, trilhas de estudo e certificações complementares em Python e gestão de projetos.</p>
+    <p>Hoje atuo em monitoramento remoto em escala 12x36, o que exige atenção constante, comunicação clara à distância e resolução ágil de problemas — habilidades que aplico também no meu processo de desenvolvimento e nos estudos diários.</p>
+  </section>
+
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="project-card">
+      <h3>Sistema de Pedidos — Hamburgueria</h3>
+      <div class="project-meta">JavaScript · HTML · CSS</div>
+      <p>Projeto desenvolvido durante a graduação: um sistema de pedidos para hamburgueria com seleção de produtos, adição de opcionais, cálculo automático do valor total e geração de um resumo da compra.</p>
+      <div class="project-links">
+        <a href="https://github.com/WyversonCouto" target="_blank">Ver código no GitHub →</a>
+      </div>
+
+      <div class="demo">
+        <div class="demo-title">Versão reduzida do sistema, rodando aqui:</div>
+        <div class="demo-grid">
+          <div>
+            <div class="item-row">
+              <label><input type="checkbox" class="opt" data-name="Hambúrguer artesanal" data-price="18"> Hambúrguer artesanal</label>
+              <span class="price">R$ 18,00</span>
+            </div>
+            <div class="item-row">
+              <label><input type="checkbox" class="opt" data-name="Bacon extra" data-price="4"> Bacon extra</label>
+              <span class="price">R$ 4,00</span>
+            </div>
+            <div class="item-row">
+              <label><input type="checkbox" class="opt" data-name="Queijo extra" data-price="3"> Queijo extra</label>
+              <span class="price">R$ 3,00</span>
+            </div>
+            <div class="item-row">
+              <label><input type="checkbox" class="opt" data-name="Batata frita" data-price="9"> Batata frita</label>
+              <span class="price">R$ 9,00</span>
+            </div>
+            <div class="item-row">
+              <label><input type="checkbox" class="opt" data-name="Refrigerante" data-price="6"> Refrigerante</label>
+              <span class="price">R$ 6,00</span>
+            </div>
+          </div>
+          <div class="summary">
+            <div class="total-label">Total do pedido</div>
+            <div class="total-value" id="total">R$ 0,00</div>
+            <ul id="itemList"><li class="empty">Nenhum item selecionado</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <h2>Habilidades técnicas</h2>
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">React</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">Python</span>
+      <span class="tag">Git &amp; GitHub</span>
+      <span class="tag">MySQL Workbench</span>
+    </div>
+  </section>
+
+  <section id="formacao">
+    <h2>Formação e certificações</h2>
+    <p style="margin-bottom:18px;">Tecnólogo em Análise e Desenvolvimento de Sistemas — concluído em 2026.</p>
+    <div class="cert-list">
+      <div class="cert-row"><span class="cert-name">Intensivão de JavaScript</span><span class="cert-org">Hashtag Treinamentos</span></div>
+      <div class="cert-row"><span class="cert-name">Jornada Python</span><span class="cert-org">Hashtag Treinamentos</span></div>
+      <div class="cert-row"><span class="cert-name">Imersão Dev</span><span class="cert-org">Alura</span></div>
+      <div class="cert-row"><span class="cert-name">Estruturas de Dados em Python</span><span class="cert-org">ColaboraRead</span></div>
+      <div class="cert-row"><span class="cert-name">Trilha de Análise de Dados com Python</span><span class="cert-org">ColaboraRead</span></div>
+      <div class="cert-row"><span class="cert-name">Gestão de Projetos</span><span class="cert-org">ColaboraRead</span></div>
+      <div class="cert-row"><span class="cert-name">Inglês — Vocabulário Essencial e Incrementando o Vocabulário</span><span class="cert-org">ColaboraRead</span></div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <h2>Experiência</h2>
+    <div class="job">
+      <div class="job-head">
+        <h3>Alarm System — Monitoramento Remoto</h3>
+        <span class="job-period">abr. 2026 — atual</span>
+      </div>
+      <p>Atendimento e monitoramento remoto de condomínios em escala 12x36, com cerca de 1700 atendimentos realizados e 98% de resolução, seguindo normas específicas de cada cliente monitorado.</p>
+    </div>
+    <div class="job">
+      <div class="job-head">
+        <h3>Flor De Algodão Enxovais — Assistente de Expedição</h3>
+        <span class="job-period">fev. — mar. 2026</span>
+      </div>
+      <p>Expedição de pedidos sem atrasos nas entregas, apoiando outros setores nos momentos de maior demanda.</p>
+    </div>
+    <div class="job">
+      <div class="job-head">
+        <h3>Life Sucos — Controlador de Estoque</h3>
+        <span class="job-period">mar. 2023 — jun. 2025</span>
+      </div>
+      <p>Controle de estoque e organização de processos internos ao longo de mais de dois anos.</p>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="label">GitHub</span>
+        <a href="https://github.com/WyversonCouto" target="_blank">github.com/WyversonCouto</a>
+      </div>
+      <div class="contact-item">
+        <span class="label">E-mail</span>
+        <span class="fill-in">[adicionar seu e-mail aqui]</span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Telefone / WhatsApp</span>
+        <span class="fill-in">[adicionar seu telefone aqui]</span>
+      </div>
+      <div class="contact-item">
+        <span class="label">LinkedIn</span>
+        <span class="fill-in">[adicionar seu LinkedIn aqui, se tiver]</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>Wyverson Couto — Desenvolvedor Front-End</footer>
+</div>
+
+<script>
+  const checkboxes = document.querySelectorAll('.opt');
+  const totalEl = document.getElementById('total');
+  const listEl = document.getElementById('itemList');
+
+  function formatBRL(v){
+    return v.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+  }
+
+  function update(){
+    let total = 0;
+    let items = [];
+    checkboxes.forEach(cb => {
+      if(cb.checked){
+        const price = parseFloat(cb.dataset.price);
+        total += price;
+        items.push(cb.dataset.name);
+      }
+    });
+    totalEl.textContent = formatBRL(total);
+    listEl.innerHTML = items.length
+      ? items.map(i => `<li>${i}</li>`).join('')
+      : '<li class="empty">Nenhum item selecionado</li>';
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', update));
+</script>
+
+</body>
+</html>
