@@ -4,6 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wyverson Couto — Desenvolvedor Front-End</title>
+<meta name="description" content="Portfólio de Wyverson Couto, desenvolvedor front-end júnior: projetos em React e TypeScript, formação em Análise e Desenvolvimento de Sistemas e contato.">
+<meta name="author" content="Wyverson Couto">
+<meta name="theme-color" content="#2F6F62">
+<link rel="canonical" href="https://wyversoncouto.github.io/Portfolio/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232F6F62'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='Georgia,serif'>W</text></svg>">
+
+<!-- Pré-visualização ao compartilhar o link (LinkedIn, WhatsApp, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Wyverson Couto">
+<meta property="og:title" content="Wyverson Couto — Desenvolvedor Front-End">
+<meta property="og:description" content="Interfaces responsivas com React e TypeScript. Veja o Kurio, um marketplace de NFTs com tempo real, 72 testes E2E e deploy público.">
+<meta property="og:url" content="https://wyversoncouto.github.io/Portfolio/">
+<meta property="og:image" content="https://wyversoncouto.github.io/Portfolio/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Página inicial do Kurio, marketplace de NFTs desenvolvido por Wyverson Couto">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,71 +33,132 @@
     --ink: #1A2421;
     --ink-soft: #43524C;
     --accent: #2F6F62;
-    --accent-warm: #C9752E;
+    --accent-dark: #245649;
     --line: rgba(26,36,33,0.14);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
   body{
     margin:0;
     background:var(--bg);
     color:var(--ink);
-    font-family:'Inter', sans-serif;
+    font-family:'Inter', system-ui, sans-serif;
     line-height:1.6;
   }
   h1,h2,h3{
-    font-family:'Fraunces', serif;
+    font-family:'Fraunces', Georgia, serif;
     font-weight:600;
     margin:0;
     color:var(--ink);
   }
-  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
+  .wrap{max-width:800px; margin:0 auto; padding:0 28px;}
   a{color:var(--accent);}
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:3px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+  .skip{
+    position:absolute; left:-999px; top:8px;
+    background:var(--ink); color:#fff; padding:8px 14px; border-radius:3px; z-index:10;
+  }
+  .skip:focus{left:8px;}
 
   /* HERO */
   header.hero{
-    padding:88px 0 64px;
+    padding:84px 0 60px;
     border-bottom:1px solid var(--line);
   }
-  .kicker{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:14px;
-    color:var(--accent);
-    margin-bottom:14px;
-  }
-  h1{font-size:clamp(36px, 6vw, 54px); line-height:1.08; max-width:11ch;}
+  h1{font-size:clamp(38px, 7vw, 58px); line-height:1.06;}
   .role{
-    font-size:19px;
-    color:var(--ink-soft);
-    margin-top:14px;
-    max-width:52ch;
+    font-size:20px;
+    color:var(--ink);
+    margin:18px 0 0;
+    max-width:34em;
   }
-  .hero-links{margin-top:28px; display:flex; gap:22px; flex-wrap:wrap; font-size:15px;}
-  .hero-links a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px;}
-  .hero-links a:hover{border-color:var(--accent);}
+  .where{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:8px 0 0;
+  }
+  .hero-actions{margin-top:30px; display:flex; gap:14px 22px; flex-wrap:wrap; align-items:center; font-size:15px;}
+  .btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    text-decoration:none;
+    padding:11px 20px;
+    border-radius:3px;
+    font-weight:500;
+  }
+  .btn:hover{background:var(--accent-dark);}
+  .hero-actions a.text-link{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px;}
+  .hero-actions a.text-link:hover{border-color:var(--accent);}
 
   section{padding:56px 0; border-bottom:1px solid var(--line);}
   section:last-of-type{border-bottom:none;}
-  h2{font-size:26px; margin-bottom:24px;}
+  h2{font-size:27px; margin-bottom:24px;}
+  h3{font-size:21px;}
 
-  p{color:var(--ink-soft); max-width:64ch;}
+  p{color:var(--ink-soft); max-width:64ch; margin:0 0 14px;}
+  p:last-child{margin-bottom:0;}
 
-  /* PROJETO / DEMO */
+  /* PROJETOS */
   .project-card{
     background:var(--paper);
     border:1px solid var(--line);
     border-radius:4px;
     padding:32px;
+    margin-bottom:24px;
   }
-  .project-card h3{font-size:21px; margin-bottom:8px;}
-  .project-meta{
+  .project-card:last-child{margin-bottom:0;}
+  .project-card.featured{padding:36px 32px 32px; border-color:rgba(47,111,98,0.45);}
+  .project-card.featured h3{font-size:28px;}
+  .project-card h3{margin-bottom:10px;}
+  .project-card h4{font-size:15px; font-weight:600; margin:22px 0 8px; color:var(--ink);}
+
+  .highlights{margin:0; padding-left:20px; color:var(--ink-soft); max-width:66ch;}
+  .highlights li{margin-bottom:8px;}
+  .highlights strong{color:var(--ink); font-weight:600;}
+
+  .gallery{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0 4px;}
+  @media(max-width:560px){.gallery{grid-template-columns:1fr;}}
+  .gallery figure{margin:0;}
+  .gallery a{
+    display:block;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    background:#1a1410;
+  }
+  .gallery img{display:block; width:100%; height:auto;}
+  .gallery figcaption{font-size:13px; color:var(--ink-soft); margin-top:6px;}
+
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
     font-family:'IBM Plex Mono', monospace;
     font-size:13px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:3px;
     color:var(--ink-soft);
-    margin-bottom:16px;
+    background:var(--bg);
   }
-  .project-links{margin-top:18px; font-size:15px;}
+  .project-card .tags{margin-top:16px;}
 
+  .project-links{margin-top:20px; display:flex; flex-wrap:wrap; gap:10px 24px; font-size:15px;}
+  .project-links a{font-weight:500;}
+
+  .mini-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media(max-width:640px){.mini-grid{grid-template-columns:1fr;}}
+  .mini-grid .project-card{margin-bottom:0; padding:26px;}
+  .mini-grid .project-card h3{font-size:19px;}
+  .mini-grid p{font-size:15px;}
+
+  .subhead{font-size:17px; margin:40px 0 16px; font-family:'Inter',sans-serif; font-weight:600;}
+
+  /* DEMO HAMBURGUERIA */
   .demo{
     margin-top:24px;
     border-top:1px dashed var(--line);
@@ -92,8 +172,8 @@
     padding:9px 0; border-bottom:1px solid var(--line); font-size:15px;
   }
   .item-row:last-child{border-bottom:none;}
-  .item-row label{display:flex; align-items:center; gap:10px; cursor:pointer;}
-  .item-row input{accent-color:var(--accent); width:16px; height:16px;}
+  .item-row label{display:flex; align-items:center; gap:10px; cursor:pointer; color:var(--ink);}
+  .item-row input{accent-color:var(--accent); width:18px; height:18px;}
   .price{color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; font-size:14px;}
   .summary{
     background:var(--bg);
@@ -111,19 +191,13 @@
   .empty{color:var(--ink-soft); font-size:14px; font-style:italic;}
 
   /* HABILIDADES */
-  .tags{display:flex; flex-wrap:wrap; gap:10px;}
-  .tag{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    padding:7px 12px;
-    border:1px solid var(--line);
-    border-radius:3px;
-    color:var(--ink-soft);
-    background:var(--paper);
-  }
+  .skill-group{margin-bottom:22px;}
+  .skill-group:last-child{margin-bottom:0;}
+  .skill-group h3{font-family:'Inter',sans-serif; font-size:15px; font-weight:600; margin-bottom:10px;}
+  .skill-group .tag{background:var(--paper);}
 
   /* FORMAÇÃO / CERTIFICAÇÕES */
-  .cert-list{display:flex; flex-direction:column; gap:0;}
+  .cert-list{display:flex; flex-direction:column;}
   .cert-row{
     display:flex; justify-content:space-between; gap:16px;
     padding:14px 0; border-bottom:1px solid var(--line);
@@ -131,9 +205,10 @@
   }
   .cert-row:last-child{border-bottom:none;}
   .cert-name{color:var(--ink);}
-  .cert-org{color:var(--ink-soft); font-size:13px; font-family:'IBM Plex Mono', monospace; text-align:right; white-space:nowrap;}
+  .cert-org{color:var(--ink-soft); font-size:13px; font-family:'IBM Plex Mono', monospace; text-align:right;}
+  @media(max-width:560px){.cert-row{flex-direction:column; gap:2px;} .cert-org{text-align:left;}}
 
-  /* EXPERIENCIA */
+  /* EXPERIÊNCIA */
   .job{margin-bottom:26px;}
   .job:last-child{margin-bottom:0;}
   .job-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px;}
@@ -142,46 +217,114 @@
   .job p{margin-top:6px; font-size:15px;}
 
   /* CONTATO */
-  .contact-grid{display:flex; flex-wrap:wrap; gap:28px; font-size:15px;}
-  .contact-item .label{display:block; font-size:12px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; margin-bottom:4px;}
-  .fill-in{color:var(--accent-warm);}
+  .contact-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:22px 28px; font-size:16px;}
+  .contact-item .label{display:block; font-size:13px; color:var(--ink-soft); margin-bottom:2px;}
+  .contact-item a{font-weight:500; word-break:break-word;}
 
   footer{padding:40px 0 70px; font-size:13px; color:var(--ink-soft);}
 </style>
 </head>
 <body>
 
+<a class="skip" href="#projetos">Ir para os projetos</a>
+
 <div class="wrap">
   <header class="hero">
-    <div class="kicker">portfólio</div>
     <h1>Wyverson Couto</h1>
-    <p class="role">Desenvolvedor Front-End em formação, com base em HTML5, CSS3, JavaScript e React — construindo o caminho de analista de sistemas para o desenvolvimento com projetos práticos e estudo constante.</p>
-    <div class="hero-links">
-      <a href="https://github.com/WyversonCouto" target="_blank">github.com/WyversonCouto</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
-    </div>
+    <p class="role">Desenvolvedor front-end júnior. Construo interfaces responsivas com React e TypeScript e busco minha primeira oportunidade na área.</p>
+    <p class="where">Araraquara (SP), disponível para trabalho remoto.</p>
+    <nav class="hero-actions" aria-label="Atalhos">
+      <a class="btn" href="#projetos">Ver projetos</a>
+      <!-- Currículo: envie o PDF para a raiz do repositório com este nome e remova os comentários da linha abaixo.
+      <a class="text-link" href="Wyverson_Couto_Curriculo.pdf" download>Baixar currículo</a>
+      -->
+      <a class="text-link" href="https://github.com/WyversonCouto" target="_blank" rel="noopener">GitHub</a>
+      <a class="text-link" href="https://www.linkedin.com/in/wyverson-couto" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="text-link" href="#contato">Contato</a>
+    </nav>
   </header>
+
+  <main id="conteudo">
 
   <section id="sobre">
     <h2>Sobre</h2>
-    <p>Tecnólogo em Análise e Desenvolvimento de Sistemas, com formação concluída em 2026. Ao longo do curso e por conta própria, venho me aprofundando em desenvolvimento front-end — HTML5, CSS3, JavaScript, React e TypeScript — através de projetos práticos, trilhas de estudo e certificações complementares em Python e gestão de projetos.</p>
-    <p>Hoje atuo em monitoramento remoto em escala 12x36, o que exige atenção constante, comunicação clara à distância e resolução ágil de problemas — habilidades que aplico também no meu processo de desenvolvimento e nos estudos diários.</p>
+    <p>Tecnólogo em Análise e Desenvolvimento de Sistemas, com formação concluída em 2026. Ao longo do curso e por conta própria, venho me aprofundando em desenvolvimento front-end com HTML5, CSS3, JavaScript, React e TypeScript, por meio de projetos práticos, imersões e certificações complementares em Python, dados e automação.</p>
+    <p>Hoje atuo em monitoramento remoto em escala 12x36, o que exige atenção constante, comunicação clara à distância e resolução ágil de problemas, habilidades que aplico também no meu processo de desenvolvimento e nos estudos diários.</p>
+    <p>Idiomas: português (nativo), inglês (avançado) e espanhol (intermediário).</p>
   </section>
 
   <section id="projetos">
     <h2>Projetos</h2>
-    <div class="project-card">
-      <h3>Sistema de Pedidos — Hamburgueria</h3>
-      <div class="project-meta">JavaScript · HTML · CSS</div>
-      <p>Projeto desenvolvido durante a graduação: um sistema de pedidos para hamburgueria com seleção de produtos, adição de opcionais, cálculo automático do valor total e geração de um resumo da compra.</p>
+
+    <article class="project-card featured">
+      <h3>Kurio, um marketplace de NFTs</h3>
+      <p>Aplicação front-end completa, construída a partir de um layout no Figma como desafio técnico. Vai do catálogo à confirmação do pedido, com login, cadastro, perfil e carteiras, em desktop e mobile.</p>
+
+      <div class="gallery">
+        <figure>
+          <a href="assets/kurio-inicio.webp" target="_blank" rel="noopener" aria-label="Abrir a imagem da página inicial do Kurio em tamanho maior">
+            <img src="assets/kurio-inicio.webp" width="1100" height="593" loading="lazy" alt="Página inicial do Kurio com a vitrine de NFTs, coleções e ordenação">
+          </a>
+          <figcaption>Início, com catálogo, filtros e ordenação</figcaption>
+        </figure>
+        <figure>
+          <a href="assets/kurio-detalhe.webp" target="_blank" rel="noopener" aria-label="Abrir a imagem do detalhe de um NFT em tamanho maior">
+            <img src="assets/kurio-detalhe.webp" width="1100" height="590" loading="lazy" alt="Detalhe de um NFT com galeria, edição, quantidade e botão de compra">
+          </a>
+          <figcaption>Detalhe do NFT, com galeria e compra</figcaption>
+        </figure>
+        <figure>
+          <a href="assets/kurio-carrinho.webp" target="_blank" rel="noopener" aria-label="Abrir a imagem do carrinho em tamanho maior">
+            <img src="assets/kurio-carrinho.webp" width="1100" height="569" loading="lazy" alt="Carrinho com três NFTs, cupom aplicado e resumo de valores em ETH">
+          </a>
+          <figcaption>Carrinho com cupom aplicado</figcaption>
+        </figure>
+        <figure>
+          <a href="assets/kurio-checkout.webp" target="_blank" rel="noopener" aria-label="Abrir a imagem da revisão do pedido em tamanho maior">
+            <img src="assets/kurio-checkout.webp" width="1100" height="582" loading="lazy" alt="Modal de revisão do pedido antes do envio, com itens, carteira, rede e total">
+          </a>
+          <figcaption>Revisão do pedido antes do envio</figcaption>
+        </figure>
+      </div>
+
+      <h4>O que tem por trás</h4>
+      <ul class="highlights">
+        <li><strong>Pedido idempotente.</strong> Clique repetido, timeout ou refresh não geram compra duplicada.</li>
+        <li><strong>Tempo real com Socket.IO.</strong> Preço e disponibilidade atualizam no catálogo e no carrinho, e eventos duplicados ou antigos são descartados.</li>
+        <li><strong>72 testes E2E com Playwright</strong> em desktop, mobile e tablet, incluindo regressão visual.</li>
+        <li><strong>Lighthouse:</strong> Performance 100 no desktop e entre 82 e 88 no mobile, com as causas documentadas no repositório.</li>
+      </ul>
+
+      <div class="tags" aria-label="Tecnologias usadas">
+        <span class="tag">React</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">TanStack Router</span>
+        <span class="tag">TanStack Query</span>
+        <span class="tag">Axios</span>
+        <span class="tag">Socket.IO</span>
+        <span class="tag">Tailwind CSS</span>
+        <span class="tag">shadcn/ui</span>
+        <span class="tag">MSW</span>
+        <span class="tag">Playwright</span>
+        <span class="tag">Vercel</span>
+      </div>
+
       <div class="project-links">
-        <a href="https://github.com/WyversonCouto/sistema-pedidos-hamburgueria" target="_blank">Ver código no GitHub →</a>
-        <a href="https://wyversoncouto.github.io/sistema-pedidos-hamburgueria/" target="_blank">Ver projeto ao vivo →</a>
+        <a href="https://frontend-challenge-kappa-lac.vercel.app" target="_blank" rel="noopener">Ver a aplicação online</a>
+        <a href="https://github.com/WyversonCouto/nft-marketplace-frontend" target="_blank" rel="noopener">Ver o código no GitHub</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <h3>Sistema de Pedidos para hamburgueria</h3>
+      <p>Projeto desenvolvido durante a graduação: seleção de produtos, adição de opcionais, cálculo automático do valor total e resumo da compra, em HTML, CSS e JavaScript puro.</p>
+      <div class="project-links">
+        <a href="https://wyversoncouto.github.io/sistema-pedidos-hamburgueria/" target="_blank" rel="noopener">Ver o projeto ao vivo</a>
+        <a href="https://github.com/WyversonCouto/sistema-pedidos-hamburgueria" target="_blank" rel="noopener">Ver o código no GitHub</a>
       </div>
 
       <div class="demo">
-        <div class="demo-title">Versão reduzida do sistema, rodando aqui:</div>
+        <div class="demo-title">Versão reduzida do sistema, funcionando aqui:</div>
         <div class="demo-grid">
           <div>
             <div class="item-row">
@@ -205,41 +348,95 @@
               <span class="price">R$ 6,00</span>
             </div>
           </div>
-          <div class="summary">
+          <div class="summary" aria-live="polite">
             <div class="total-label">Total do pedido</div>
             <div class="total-value" id="total">R$ 0,00</div>
             <ul id="itemList"><li class="empty">Nenhum item selecionado</li></ul>
           </div>
         </div>
       </div>
+    </article>
+
+    <h3 class="subhead">Automação e dados</h3>
+    <div class="mini-grid">
+      <article class="project-card">
+        <h3>WY Assistant AI</h3>
+        <p>Secretária virtual com IA local (Ollama) e n8n, integrada ao Google Calendar, Gmail e Telegram. Inclui a correção de um bug de loop de auto-resposta.</p>
+        <div class="tags">
+          <span class="tag">n8n</span>
+          <span class="tag">Ollama</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Telegram</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/WyversonCouto/WY-Assistant-AI" target="_blank" rel="noopener">Ver o código no GitHub</a>
+        </div>
+      </article>
+      <article class="project-card">
+        <h3>VoeBem Analytics</h3>
+        <p>Pipeline de dados da aviação brasileira (ANAC) no Databricks, com arquitetura medalhão: Bronze, Silver, Gold e Genie.</p>
+        <div class="tags">
+          <span class="tag">Databricks</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/WyversonCouto/voebem-analytics-databricks" target="_blank" rel="noopener">Ver o código no GitHub</a>
+        </div>
+      </article>
     </div>
   </section>
 
   <section id="habilidades">
     <h2>Habilidades técnicas</h2>
-    <div class="tags">
-      <span class="tag">HTML5</span>
-      <span class="tag">CSS3</span>
-      <span class="tag">JavaScript</span>
-      <span class="tag">React</span>
-      <span class="tag">TypeScript</span>
-      <span class="tag">Python</span>
-      <span class="tag">Git &amp; GitHub</span>
-      <span class="tag">MySQL Workbench</span>
+    <div class="skill-group">
+      <h3>Front-end</h3>
+      <div class="tags">
+        <span class="tag">HTML5</span>
+        <span class="tag">CSS3</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">React</span>
+        <span class="tag">Tailwind CSS</span>
+        <span class="tag">TanStack Query</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Qualidade e entrega</h3>
+      <div class="tags">
+        <span class="tag">Playwright</span>
+        <span class="tag">Lighthouse</span>
+        <span class="tag">Git e GitHub</span>
+        <span class="tag">Vercel</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Dados e automação</h3>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">n8n</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Databricks</span>
+      </div>
     </div>
   </section>
 
   <section id="formacao">
     <h2>Formação e certificações</h2>
-    <p style="margin-bottom:18px;">Tecnólogo em Análise e Desenvolvimento de Sistemas — concluído em 2026.</p>
+    <p style="margin-bottom:18px;">Tecnólogo em Análise e Desenvolvimento de Sistemas, concluído em 2026.</p>
     <div class="cert-list">
+      <div class="cert-row"><span class="cert-name">Santander Bootcamp 2026: Automação com N8N (26h)</span><span class="cert-org">DIO</span></div>
+      <div class="cert-row"><span class="cert-name">Imersão Engenharia de Software: Dev na era da IA (4h)</span><span class="cert-org">Alura e Google for Startups</span></div>
+      <div class="cert-row"><span class="cert-name">Formação GitHub Certification (10h)</span><span class="cert-org">DIO</span></div>
+      <div class="cert-row"><span class="cert-name">Imersão Engenharia de Dados com IA</span><span class="cert-org">Alura</span></div>
+      <div class="cert-row"><span class="cert-name">Imersão Dev</span><span class="cert-org">Alura</span></div>
       <div class="cert-row"><span class="cert-name">Intensivão de JavaScript</span><span class="cert-org">Hashtag Treinamentos</span></div>
       <div class="cert-row"><span class="cert-name">Jornada Python</span><span class="cert-org">Hashtag Treinamentos</span></div>
-      <div class="cert-row"><span class="cert-name">Imersão Dev</span><span class="cert-org">Alura</span></div>
       <div class="cert-row"><span class="cert-name">Estruturas de Dados em Python</span><span class="cert-org">ColaboraRead</span></div>
       <div class="cert-row"><span class="cert-name">Trilha de Análise de Dados com Python</span><span class="cert-org">ColaboraRead</span></div>
       <div class="cert-row"><span class="cert-name">Gestão de Projetos</span><span class="cert-org">ColaboraRead</span></div>
-      <div class="cert-row"><span class="cert-name">Inglês — Vocabulário Essencial e Incrementando o Vocabulário</span><span class="cert-org">ColaboraRead</span></div>
+      <div class="cert-row"><span class="cert-name">Inglês: Vocabulário Essencial e Incrementando o Vocabulário</span><span class="cert-org">ColaboraRead</span></div>
     </div>
   </section>
 
@@ -247,22 +444,22 @@
     <h2>Experiência</h2>
     <div class="job">
       <div class="job-head">
-        <h3>Alarm System — Monitoramento Remoto</h3>
-        <span class="job-period">abr. 2026 — atual</span>
+        <h3>Alarm System, monitoramento remoto</h3>
+        <span class="job-period">abr. 2026 até hoje</span>
       </div>
       <p>Atendimento e monitoramento remoto de condomínios em escala 12x36, com cerca de 2000 atendimentos realizados e 98% de resolução, seguindo normas específicas de cada cliente monitorado.</p>
     </div>
     <div class="job">
       <div class="job-head">
-        <h3>Flor De Algodão Enxovais — Assistente de Expedição</h3>
-        <span class="job-period">fev. — mar. 2026</span>
+        <h3>Flor De Algodão Enxovais, assistente de expedição</h3>
+        <span class="job-period">fev. a mar. 2026</span>
       </div>
       <p>Expedição de pedidos sem atrasos nas entregas, apoiando outros setores nos momentos de maior demanda.</p>
     </div>
     <div class="job">
       <div class="job-head">
-        <h3>Life Sucos — Controlador de Estoque</h3>
-        <span class="job-period">mar. 2023 — jun. 2025</span>
+        <h3>Life Sucos, controlador de estoque</h3>
+        <span class="job-period">mar. 2023 a jun. 2025</span>
       </div>
       <p>Controle de estoque e organização de processos internos ao longo de mais de dois anos.</p>
     </div>
@@ -270,27 +467,30 @@
 
   <section id="contato">
     <h2>Contato</h2>
+    <p style="margin-bottom:22px;">Estou aberto a conversas sobre vagas de desenvolvedor front-end júnior.</p>
     <div class="contact-grid">
       <div class="contact-item">
-        <span class="label">GitHub</span>
-        <a href="https://github.com/WyversonCouto" target="_blank">github.com/WyversonCouto</a>
-      </div>
-      <div class="contact-item">
         <span class="label">E-mail</span>
-        <span class="fill-in">[Wyverson.pablo@gmail.com]</span>
+        <a href="mailto:Wyverson.pablo@gmail.com">Wyverson.pablo@gmail.com</a>
       </div>
       <div class="contact-item">
-        <span class="label">Telefone / WhatsApp</span>
-        <span class="fill-in">[5516982197348]</span>
+        <span class="label">WhatsApp</span>
+        <a href="https://wa.me/5516982197348" target="_blank" rel="noopener">(16) 98219-7348</a>
       </div>
       <div class="contact-item">
         <span class="label">LinkedIn</span>
-        <span class="fill-in">[www.linkedin.com/in/wyverson-couto]</span>
+        <a href="https://www.linkedin.com/in/wyverson-couto" target="_blank" rel="noopener">linkedin.com/in/wyverson-couto</a>
+      </div>
+      <div class="contact-item">
+        <span class="label">GitHub</span>
+        <a href="https://github.com/WyversonCouto" target="_blank" rel="noopener">github.com/WyversonCouto</a>
       </div>
     </div>
   </section>
 
-  <footer>Wyverson Couto — Desenvolvedor Front-End</footer>
+  </main>
+
+  <footer>Wyverson Couto, desenvolvedor front-end. Site feito com HTML, CSS e JavaScript.</footer>
 </div>
 
 <script>
@@ -304,18 +504,27 @@
 
   function update(){
     let total = 0;
-    let items = [];
+    const items = [];
     checkboxes.forEach(cb => {
       if(cb.checked){
-        const price = parseFloat(cb.dataset.price);
-        total += price;
+        total += parseFloat(cb.dataset.price);
         items.push(cb.dataset.name);
       }
     });
     totalEl.textContent = formatBRL(total);
-    listEl.innerHTML = items.length
-      ? items.map(i => `<li>${i}</li>`).join('')
-      : '<li class="empty">Nenhum item selecionado</li>';
+    listEl.replaceChildren();
+    if(items.length === 0){
+      const li = document.createElement('li');
+      li.className = 'empty';
+      li.textContent = 'Nenhum item selecionado';
+      listEl.appendChild(li);
+      return;
+    }
+    items.forEach(name => {
+      const li = document.createElement('li');
+      li.textContent = name;
+      listEl.appendChild(li);
+    });
   }
 
   checkboxes.forEach(cb => cb.addEventListener('change', update));
